@@ -15,9 +15,10 @@ import java.util.Date;
 import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
+
 public class FragmentoOtherDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     int dia, mes, ano;
-    String data;
+    String otherData;
 
     private View v;
 
@@ -36,9 +37,9 @@ public class FragmentoOtherDatePicker extends DialogFragment implements DatePick
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        //Log.d("Data", "Ano: "+String.valueOf(year));
-        //Log.d("Data", "Mês: "+String.valueOf(month+1));
-        //Log.d("Data", "Dia: "+String.valueOf(day));
+        //Log.d("Data", "Ano: "+ String.valueOf(year));
+        //Log.d("Data", "Mês: "+ String.valueOf(month+1));
+        //Log.d("Data", "Dia: "+ String.valueOf(day));
         dia = day;
         mes = month + 1;
         ano = year;
@@ -48,43 +49,26 @@ public class FragmentoOtherDatePicker extends DialogFragment implements DatePick
 
         if (txt != null) {
 
-            data = String.valueOf(dia) +
+            otherData = String.valueOf(dia) +
                     "/" + String.valueOf(mes) +
                     "/" + String.valueOf(ano);
             txt.setText("");
             txt.setTextColor(Color.BLACK);
             txt.append(" ");
-            txt.append(data);
+            txt.append(otherData);
             txt.append(" ");
 
-            Log.d("prints", "OutraData: " + data);
+            Log.d("prints", "OutraData: " + otherData);
 
         }
     }
 
-
-    public int getDia() {
-        return dia;
+    public String getOtherDate() {
+        return otherData;
     }
 
-    public void setDia(int dia) {
-        this.dia = dia;
-    }
-
-    public int getMes() {
-        return mes;
-    }
-
-    public void setMes(int mes) {
-        this.mes = mes;
-    }
-
-    public int getAno() {
-        return ano;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
+    public void setOtherDate(int data) {
+        this.otherData = String.valueOf(data);
     }
 
 }

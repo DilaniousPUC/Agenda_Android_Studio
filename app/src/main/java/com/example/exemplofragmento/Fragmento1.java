@@ -11,9 +11,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-
-import org.w3c.dom.Text;
+import androidx.appcompat.app.AppCompatActivity;
 
 // Repositório com exemplo de Fragmentos estáticos
 
@@ -22,7 +20,10 @@ public class Fragmento1 extends Fragment {
     private Button Botao2;
     private Button Botao3;
     private TextView texto1;
+    private String descricao;
     private View v;
+
+    CompromissosDB mCompromissoDB;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,5 +93,13 @@ public class Fragmento1 extends Fragment {
         });
 
         return v;
+    }
+
+    public String getDescription() {
+        return descricao;
+    }
+
+    public void setDescription(String descricao) {
+        this.descricao = String.valueOf(descricao);
     }
 }
