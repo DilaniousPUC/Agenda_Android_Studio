@@ -18,17 +18,17 @@ public class CompromissosDBHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(@NonNull SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE "+ CompromissosDBSchema .CompromissosTbl.NOME+ "("+
+        db.execSQL("CREATE TABLE "+ CompromissosDBSchema.CompromissosTbl.NOME+ "("+
                 "_id integer PRIMARY KEY autoincrement,"+
-                CompromissosDBSchema .CompromissosTbl.Cols.DATA+ ","+
-                CompromissosDBSchema .CompromissosTbl.Cols.HORA + ","+
-                CompromissosDBSchema .CompromissosTbl.Cols.DESCRICAO+ ")");
+                CompromissosDBSchema.CompromissosTbl.Cols.DATA+ ","+
+                CompromissosDBSchema.CompromissosTbl.Cols.HORA + ","+
+                CompromissosDBSchema.CompromissosTbl.Cols.DESCRICAO+ ")");
     }
 
     @Override
     public void onUpgrade(@NonNull SQLiteDatabase db, int versaoAntiga, int novaVersao) {
         // Política de upgrade é simplesmente descartar o conteúdo e começar novamente
-        db.execSQL("DROP TABLE IF EXISTS " + CompromissosDBSchema .CompromissosTbl.NOME);
+        db.execSQL("DROP TABLE IF EXISTS " + CompromissosDBSchema.CompromissosTbl.NOME);
         onCreate(db);
     }
 }

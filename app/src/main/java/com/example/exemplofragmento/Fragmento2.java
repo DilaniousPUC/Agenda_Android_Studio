@@ -17,14 +17,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainer;
 
 public class Fragmento2 extends Fragment {
+
     static  View frgto2;
     private Button Botao4;
     private Button Botao5;
     ViewGroup c;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,8 +52,6 @@ public class Fragmento2 extends Fragment {
 
                 txt.setTextColor(Color.BLACK);
                 txt.setText(formattedDate);
-
-
             }
         });
 

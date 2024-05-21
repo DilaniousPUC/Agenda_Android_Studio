@@ -46,8 +46,6 @@ public class Fragmento1 extends Fragment {
                 Log.d("prints", "botão data");
                 DialogFragment fragmentoData = new FragmentoDatePicker();
                 fragmentoData.show(getParentFragmentManager(), "datePicker");
-
-
             }
         });
 
@@ -74,6 +72,7 @@ public class Fragmento1 extends Fragment {
                 if (txt != null) txt.append(
                         String.valueOf(texto1.getText())
                 );
+                descricao = (String) texto1.getText();
                 Log.d("prints", "Descrição: " + texto1.getText());
             }
         });
