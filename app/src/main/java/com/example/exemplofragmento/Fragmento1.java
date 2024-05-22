@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
 
 // Repositório com exemplo de Fragmentos estáticos
 
