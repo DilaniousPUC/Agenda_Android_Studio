@@ -16,12 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 // Repositório com exemplo de Fragmentos estáticos
 
 public class Fragmento1 extends Fragment {
-    private Button Botao1;
-    private Button Botao2;
-    private Button Botao3;
-    private TextView texto1;
-    private String descricao;
-    private View v;
+    Button Botao1;
+    Button Botao2;
+    Button Botao3;
+    TextView texto1;
+    String descricao;
+    View v;
 
     CompromissosDB mCompromissoDB;
 
@@ -55,7 +55,7 @@ public class Fragmento1 extends Fragment {
 
 
 
-        texto1 = (TextView) v.findViewById(R.id.editTextDescription);
+        texto1 = v.findViewById(R.id.editTextDescription);
         texto1.setOnClickListener(view -> {
             Log.d("prints", "descrição");
             TextView txt = Fragmento2.frgto2.findViewById(R.id.texto_frg2);
