@@ -37,8 +37,6 @@ public class Fragmento1 extends Fragment {
         // Recupera uma "View v" para acessar as propriedades e métodos do fragmento
         v = inflater.inflate(R.layout.fragmento1, container, false);
 
-
-
         Botao1 = (Button) v.findViewById(R.id.button1);
         Botao1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +70,7 @@ public class Fragmento1 extends Fragment {
                 if (txt != null) txt.append(
                         String.valueOf(texto1.getText())
                 );
-                descricao = (String) texto1.getText();
+
                 Log.d("prints", "Descrição: " + texto1.getText());
             }
         });
