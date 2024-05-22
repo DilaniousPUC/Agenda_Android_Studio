@@ -22,7 +22,7 @@ public class Fragmento1 extends Fragment {
     String descricao;
     View v;
 
-    CompromissosDB mCompromissoDB;
+    //CompromissosDB mCompromissoDB;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
