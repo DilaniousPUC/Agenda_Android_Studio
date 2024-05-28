@@ -1,6 +1,6 @@
 package com.example.exemplofragmento;
 
-public class CompromissosDBSchema {
+public class TarefaDBSchema {
 
     public static final class CompromissosTbl{
         public static final String NOME = "Compromissos";

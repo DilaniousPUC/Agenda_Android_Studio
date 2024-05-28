@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.TimeZone;
 
 public class FragmentoDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     int dia, mes, ano;
@@ -32,31 +34,30 @@ public class FragmentoDatePicker extends DialogFragment implements DatePickerDia
 
     }
 
-
-
-
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        //Log.d("Data", "Ano: "+String.valueOf(year));
-        //Log.d("Data", "Mês: "+String.valueOf(month+1));
-        //Log.d("Data", "Dia: "+String.valueOf(day));
+        Log.d("Data", "Ano: "+ year);
+        Log.d("Data", "Mês: "+ (month + 1));
+        Log.d("Data", "Dia: "+ day);
         dia = day;
         mes = month + 1;
         ano = year;
 
-
-        TextView txt = (TextView) Fragmento2.frgto2.findViewById(R.id.texto_frg2);
+        TextView txt = Fragmento2.frgto2.findViewById(R.id.texto_frg2);
 
         if (txt != null) {
 
-            data = String.valueOf(dia) +
-                    "/" + String.valueOf(mes) +
-                    "/" + String.valueOf(ano);
-            txt.setText("");
+            data = dia + "/" + mes + "/" + ano;
+
+            this.setDate(data);
+
+            txt.setText(" ");
             txt.setTextColor(Color.argb(0,0,0,0));
+            txt.append(" ");
+            txt.append(this.getDate());
+            txt.append(" ");
 
-            Log.d("prints", "Data: " + data);
-
+            Log.d("prints", "Data: " + this.getDate());
         }
     }
 
@@ -65,7 +66,7 @@ public class FragmentoDatePicker extends DialogFragment implements DatePickerDia
         return data;
     }
 
-    public void setDate(int data) {
-        this.data = String.valueOf(data);
+    public void setDate(String data) {
+        this.data = data;
     }
 }

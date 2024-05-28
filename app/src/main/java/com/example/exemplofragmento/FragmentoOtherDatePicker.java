@@ -1,7 +1,9 @@
 package com.example.exemplofragmento;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,17 +11,20 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
 import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 public class FragmentoOtherDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     int dia, mes, ano;
     String otherData;
 
+    TarefaDB mCompromissoDB;
     private View v;
 
     @Override
@@ -37,28 +42,68 @@ public class FragmentoOtherDatePicker extends DialogFragment implements DatePick
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        //Log.d("Data", "Ano: "+ String.valueOf(year));
-        //Log.d("Data", "Mês: "+ String.valueOf(month+1));
-        //Log.d("Data", "Dia: "+ String.valueOf(day));
+        Log.d("Data", "Ano: "+ year);
+        Log.d("Data", "Mês: "+ (month + 1));
+        Log.d("Data", "Dia: "+ day);
         dia = day;
         mes = month + 1;
         ano = year;
 
-
-        TextView txt = (TextView) Fragmento2.frgto2.findViewById(R.id.texto_frg2);
+        TextView txt = Fragmento2.frgto2.findViewById(R.id.texto_frg2);
 
         if (txt != null) {
 
-            otherData = String.valueOf(dia) +
-                    "/" + String.valueOf(mes) +
-                    "/" + String.valueOf(ano);
-            txt.setText("");
+            otherData = dia + "/" + mes + "/" + ano;
+
+            this.setOtherDate(otherData);
+
+            txt.setText(" ");
             txt.setTextColor(Color.BLACK);
-            txt.append(" ");
-            txt.append(otherData);
+            txt.append(this.getOtherDate());
             txt.append(" ");
 
-            Log.d("prints", "OutraData: " + otherData);
+            Log.d("prints", "Outra Data: " + this.getOtherDate());
+
+            TextView text = Fragmento2.frgto2.findViewById(R.id.texto_frg2);
+            txt.setText("");
+
+            text.setTextColor(Color.BLACK);
+            text.setText(this.getOtherDate());
+
+            if (mCompromissoDB == null){
+                mCompromissoDB = new TarefaDB(requireActivity().getBaseContext());
+            }
+
+            Cursor cursor = mCompromissoDB.queryTarefa(null, null);
+            if (cursor != null) {
+                if (cursor.getCount() == 0) {
+                    text.setText("Nada a apresentar nesta data");
+                    Log.i("MSGS", "Nenhum resultado");
+                }
+                Log.i("MSGS", Integer.toString(cursor.getCount()));
+                Log.i("MSGS", "cursor não nulo!");
+                try {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        @SuppressLint("Range") String data = cursor.getString(cursor.getColumnIndex(TarefaDBSchema.CompromissosTbl.Cols.DATA));
+                        @SuppressLint("Range") String hora = cursor.getString(cursor.getColumnIndex(TarefaDBSchema.CompromissosTbl.Cols.HORA));
+                        @SuppressLint("Range") String descricao = cursor.getString(cursor.getColumnIndex(TarefaDBSchema.CompromissosTbl.Cols.DESCRICAO));
+                        Log.i("MSGS", data);
+                        Log.i("MSGS", hora);
+                        Log.i("MSGS", descricao);
+                        Log.i("MSGS", this.getOtherDate());
+
+                        if (data.equals(this.getOtherDate())){
+                            text.append("\n" + hora + " - " + descricao);
+                        }
+                        cursor.moveToNext();
+                    }
+                } finally {
+                    cursor.close();
+                }
+            } else {
+                Log.i("MSGS", "cursor nulo!");
+            }
 
         }
     }
@@ -67,8 +112,8 @@ public class FragmentoOtherDatePicker extends DialogFragment implements DatePick
         return otherData;
     }
 
-    public void setOtherDate(int data) {
-        this.otherData = String.valueOf(data);
+    public void setOtherDate(String data) {
+        this.otherData = data;
     }
 
 }

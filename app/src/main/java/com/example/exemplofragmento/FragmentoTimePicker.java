@@ -2,14 +2,13 @@ package com.example.exemplofragmento;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import androidx.annotation.RequiresApi;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
@@ -23,7 +22,7 @@ public class FragmentoTimePicker extends DialogFragment
     int hora, minuto;
     String time;
 
-    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current time as the default values for the picker
@@ -41,17 +40,19 @@ public class FragmentoTimePicker extends DialogFragment
         hora = hour;
         minuto = minute;
 
-        TextView txt = (TextView) Fragmento2.frgto2.findViewById(R.id.texto_frg2);
+        TextView txt = Fragmento2.frgto2.findViewById(R.id.texto_frg2);
 
         if (txt != null){
-            time = String.valueOf(hora) +
-                    ":" + String.valueOf(minuto);
+            time = hora +
+                    ":" + minuto;
+
+            this.setTime(time);
 
             txt.append(" ");
-            txt.append(time);
+            txt.append(this.getTime());
             txt.append(" ");
 
-            Log.d("prints", "Horário: " + time);
+            Log.d("prints", "Horário: " + this.getTime());
 
         }
 
@@ -61,8 +62,8 @@ public class FragmentoTimePicker extends DialogFragment
         return time;
     }
 
-    public void setTime(int data) {
-        this.time = String.valueOf(data);
+    public void setTime(String data) {
+        this.time = data;
     }
 
 }
