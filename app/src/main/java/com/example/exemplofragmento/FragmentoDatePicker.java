@@ -9,18 +9,16 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.TimeZone;
 
 public class FragmentoDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     int dia, mes, ano;
     String data;
 
-    private View v;
-
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker

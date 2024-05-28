@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 import java.util.TimeZone;
 
 import androidx.fragment.app.DialogFragment;
@@ -20,10 +19,8 @@ import androidx.fragment.app.Fragment;
 
 public class Fragmento2 extends Fragment {
 
+    @SuppressLint("StaticFieldLeak")
     static  View frgto2;
-    private Button Botao4;
-    private Button Botao5;
-    ViewGroup c;
     TarefaDB mCompromissoDB;
 
     @Override
@@ -38,8 +35,8 @@ public class Fragmento2 extends Fragment {
         frgto2 = inflater.inflate(R.layout.fragmento2, container, false);
         // Retorna uma "View frgto2" para acessar as propriedades e métodos do fragmento a partir da Activity pai
 
-        Botao4 = frgto2.findViewById(R.id.button1);
-        Botao4.setOnClickListener(view -> {
+        Button botao4 = frgto2.findViewById(R.id.button1);
+        botao4.setOnClickListener(view -> {
             TextView txt = Fragmento2.frgto2.findViewById(R.id.texto_frg2);
             txt.setText("");
             Date currentDate = new Date();
@@ -47,7 +44,7 @@ public class Fragmento2 extends Fragment {
             String timeZoneID = "America/Sao_Paulo";
             TimeZone timeZone = TimeZone.getTimeZone(timeZoneID);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
             sdf.setTimeZone(timeZone);
             String formattedDate = sdf.format(currentDate);
 
@@ -61,7 +58,6 @@ public class Fragmento2 extends Fragment {
             Cursor cursor = mCompromissoDB.queryTarefa(null, null);
             if (cursor != null) {
                 if (cursor.getCount() == 0) {
-                    txt.setText("Nada a apresentar nesta data");
                     Log.i("MSGS", "Nenhum resultado");
                 }
                 Log.i("MSGS", Integer.toString(cursor.getCount()));
@@ -90,8 +86,8 @@ public class Fragmento2 extends Fragment {
             }
         });
 
-        Botao5 = frgto2.findViewById(R.id.button2);
-        Botao5.setOnClickListener(view -> {
+        Button botao5 = frgto2.findViewById(R.id.button2);
+        botao5.setOnClickListener(view -> {
             DialogFragment fragmentoOtherData = new FragmentoOtherDatePicker();
             fragmentoOtherData.show(getParentFragmentManager(), "datePicker");
 

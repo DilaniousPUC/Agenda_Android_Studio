@@ -11,11 +11,9 @@ public class TarefaDBHelper extends SQLiteOpenHelper{
     private static final int VERSAO = 1;
 
     private static final String NOME_DATABASE = "Tarefa.db";
-    private Context context;
 
     public TarefaDBHelper(Context context){
         super(context, NOME_DATABASE, null, VERSAO);
-        this.context = context;
     }
 
     @Override

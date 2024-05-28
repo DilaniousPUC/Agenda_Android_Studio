@@ -10,23 +10,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
-import java.util.TimeZone;
 
 public class FragmentoOtherDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     int dia, mes, ano;
     String otherData;
 
     TarefaDB mCompromissoDB;
-    private View v;
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker
@@ -77,7 +74,6 @@ public class FragmentoOtherDatePicker extends DialogFragment implements DatePick
             Cursor cursor = mCompromissoDB.queryTarefa(null, null);
             if (cursor != null) {
                 if (cursor.getCount() == 0) {
-                    text.setText("Nada a apresentar nesta data");
                     Log.i("MSGS", "Nenhum resultado");
                 }
                 Log.i("MSGS", Integer.toString(cursor.getCount()));
