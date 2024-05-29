@@ -83,10 +83,6 @@ public class FragmentoOtherDatePicker extends DialogFragment implements DatePick
                         @SuppressLint("Range") String data = cursor.getString(cursor.getColumnIndex(TarefaDBSchema.CompromissosTbl.Cols.DATA));
                         @SuppressLint("Range") String hora = cursor.getString(cursor.getColumnIndex(TarefaDBSchema.CompromissosTbl.Cols.HORA));
                         @SuppressLint("Range") String descricao = cursor.getString(cursor.getColumnIndex(TarefaDBSchema.CompromissosTbl.Cols.DESCRICAO));
-                        Log.i("MSGS", data);
-                        Log.i("MSGS", hora);
-                        Log.i("MSGS", descricao);
-                        Log.i("MSGS", this.getOtherDate());
 
                         if (data.equals(this.getOtherDate())){
                             text.append("\n" + hora + " - " + descricao);

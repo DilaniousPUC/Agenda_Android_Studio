@@ -40,12 +40,12 @@ public class TarefaDB {
 
     public Cursor queryTarefa(String clausulaWhere, String[] argsWhere){
         return mDatabase.query(TarefaDBSchema.CompromissosTbl.NOME,
-                null,  // todas as colunas
+                null,  // pega todas as colunas
                 clausulaWhere,
                 argsWhere,
-                null, // sem group by
-                null, // sem having
-                null  // sem order by
+                null, // não há group by
+                null, // não há having
+                null  // não há order by
         );
     }
 }

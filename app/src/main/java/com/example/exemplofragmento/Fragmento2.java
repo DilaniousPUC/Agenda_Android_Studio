@@ -60,18 +60,12 @@ public class Fragmento2 extends Fragment {
                 if (cursor.getCount() == 0) {
                     Log.i("MSGS", "Nenhum resultado");
                 }
-                Log.i("MSGS", Integer.toString(cursor.getCount()));
-                Log.i("MSGS", "cursor não nulo!");
                 try {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
                         @SuppressLint("Range") String data = cursor.getString(cursor.getColumnIndex(TarefaDBSchema.CompromissosTbl.Cols.DATA));
                         @SuppressLint("Range") String hora = cursor.getString(cursor.getColumnIndex(TarefaDBSchema.CompromissosTbl.Cols.HORA));
                         @SuppressLint("Range") String descricao = cursor.getString(cursor.getColumnIndex(TarefaDBSchema.CompromissosTbl.Cols.DESCRICAO));
-                        Log.i("MSGS", data);
-                        Log.i("MSGS", hora);
-                        Log.i("MSGS", descricao);
-                        Log.i("MSGS", formattedDate);
 
                         if (data.equals(formattedDate)){
                             txt.append("\n" + hora + " - " + descricao);
