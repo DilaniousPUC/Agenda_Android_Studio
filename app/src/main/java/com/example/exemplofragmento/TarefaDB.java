@@ -31,10 +31,6 @@ public class TarefaDB {
 
     public void addComprimisso(String data, String time, String description) {
         ContentValues valores = getValoresConteudo(data, time, description);
-        Log.d("prints", "data: " + data);
-        Log.d("prints", "time: " + time);
-        Log.d("prints", "description: " + description);
-        Log.d("prints", "to aqui com os valores: " + valores);
         mDatabase.insert(TarefaDBSchema.CompromissosTbl.NOME, null, valores);
     }
 

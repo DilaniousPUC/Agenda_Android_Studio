@@ -58,21 +58,15 @@ public class Fragmento1 extends Fragment {
             if (txt != null) txt.append(
                     String.valueOf(texto1.getText())
             );
-
-            Log.d("prints", "Descrição: " + texto1.getText());
         });
 
 
         Botao3 = v.findViewById(R.id.button3);
         Botao3.setOnClickListener(view -> {
 
-            Log.d("prints", "botao Ok");
-
             txt = Fragmento2.frgto2.findViewById(R.id.texto_frg2);
 
             txt.setTextColor(Color.BLACK);
-
-            Log.d("prints", "to aqui" + txt);
 
             if (mCompromissoDB == null){
                 mCompromissoDB = new TarefaDB(requireActivity().getBaseContext());

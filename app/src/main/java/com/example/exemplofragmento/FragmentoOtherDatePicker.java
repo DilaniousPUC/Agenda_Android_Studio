@@ -38,9 +38,6 @@ public class FragmentoOtherDatePicker extends DialogFragment implements DatePick
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        Log.d("Data", "Ano: "+ year);
-        Log.d("Data", "Mês: "+ (month + 1));
-        Log.d("Data", "Dia: "+ day);
         dia = day;
         mes = month + 1;
         ano = year;
