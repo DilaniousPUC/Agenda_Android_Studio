@@ -75,8 +75,6 @@ public class FragmentoOtherDatePicker extends DialogFragment implements DatePick
                 if (cursor.getCount() == 0) {
                     Log.i("MSGS", "Nenhum resultado");
                 }
-                Log.i("MSGS", Integer.toString(cursor.getCount()));
-                Log.i("MSGS", "cursor não nulo!");
                 try {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
